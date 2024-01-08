@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title>HTML Academy: Седона</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="images/favicon.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   </head>
 
   <body>
@@ -38,15 +41,14 @@
           <li class="user-menu-item like-number">
             <a class="user-menu-link" href="#">
               <span class="visually-hidden">избранное</span>
+              <span class="user-menu-like">12</span>
               <svg class="user-menu-icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="19" height="17" fill="none" viewBox="0 0 19 17">
                 <path fill="#000000" d="M9.3 17a.9.9 0 0 1-.8-.4c-5.4-6.1-6.7-7.5-7-7.9A5.4 5.4 0 0 1 5.9 0c1.3 0 2.5.5 3.5 1.3a5.46 5.46 0 0 1 9 4.1c0 1.3-.5 2.5-1.3 3.4l-7 7.9c-.2.2-.4.3-.8.3Zm-6-9.5c.3.4 3.5 4 6.1 6.9l6.2-7c.5-.5.7-1.2.7-2 0-1.8-1.5-3.3-3.3-3.3-1 0-2 .5-2.7 1.3-.3.3-.6.4-.9.4-.3 0-.6-.2-.8-.4-.7-.8-1.7-1.3-2.7-1.3-1.8 0-3.3 1.5-3.3 3.3-.1.9.3 1.6.7 2.1-.1 0-.1 0 0 0Z"/>
               </svg>
             </a>
           </li>
-          <li class="user-menu-item-button">
-            <button class="button-all user-menu-button" type="button">Хочу сюда!</button>
-          </li>
         </ul>
+        <button class="button-all user-menu-button" type="button">Хочу сюда!</button>
       </nav>
     </header>
 
@@ -144,7 +146,7 @@
         <p class="subscribe-text">Только полезная информация и никакого спама,<br>честное бойскаутское!</p>
         <form class="subscribe-form" action="https://echo.htmlacademy.ru/" method="post">
           <label class="visually-hidden" for="into-subscribe-email">Поле ввода е-мейл</label>
-          <input class="subscribe-input" id="into-subscribe-email" type="email" placeholder="Ваш e-mail" name="subscribe-email">
+          <input class="subscribe-input" id="into-subscribe-email" type="email" placeholder="Ваш e-mail" name="subscribe-email" required>
           <button class="button-all button-subscribe" type="submit">Подписаться</button>
         </form>
       </aside>
@@ -200,5 +202,74 @@
       </section>
 
     </footer>
+
+    <!--модальное окно-->
+    <div class="modal-container modal-hidden">
+      <div class="modal-search-block">
+        <!--кнопка закрытия окна-->
+        <button class="close-modal" type="button">
+          <span class="visually-hidden">Закрыть</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M14 1.29231L12.7077 0L7 5.70769L1.29231 0L0 1.29231L5.70769 7L0 12.7077L1.29231 14L7 8.29231L12.7077 14L14 12.7077L8.29231 7L14 1.29231Z" fill="#000000"/>
+          </svg>
+        </button>
+
+        <section class="modal-content">
+          <h2 class="modal-heading">Поиск гостиницы в Седоне</h2>
+          <form class="modal-search-form" action="https://echo.htmlacademy.ru/" method="get">
+
+            <label class="modal-form-label date-in" for="modal-date-in">Дата заезда:</label>
+            <div  class="modal-input-wrapper-in">
+              <input class="modal-date-input date-in" id="modal-date-in" name="visit-date-in" type="text" placeholder="Укажите дату" value="27 апреля 2020" required>
+              <button class="calendar-button" type="button"></button>
+              <div class="date-in-messages-wrapper">
+                <span class="modal-date-message error-message">Мы не можем отправить вас в прошлое.</span>
+                <span class="modal-date-message warning-message message-hidden">На эти даты есть свободные номера. Пока есть.</span>
+              </div>
+            </div>
+
+            <label class="modal-form-label date-out" for="modal-date-out">Дата выезда:</label>
+            <div class="modal-input-wrapper-out">
+              <input class="modal-date-input date-out" id="modal-date-out" name="visit-date-out" type="text" placeholder="Укажите дату" value="1 сентября 2023" required>
+              <button class="calendar-button" type="button"></button>
+              <div class="date-out-messages-wrapper">
+                <span class="modal-date-message error-message message-hidden">Мы не можем отправить вас в прошлое.</span>
+                <span class="modal-date-message warning-message">На эти даты есть свободные номера. Пока есть.</span>
+              </div>
+            </div>
+
+            <label class="modal-form-label num-adult" for="modal-num-adult">Взрослые:</label>
+            <div class="number-input-wrapper first-element">
+              <button class="button-num-minus" type="button">
+                <span class="visually-hidden">убавить</span>
+              </button>
+              <input class="number-input num-adult" id="modal-num-adult" name="visit-number-adult" type="number" value="2" min="0" required>
+              <button class="button-num-plus" type="button">
+                <span class="visually-hidden">добавить</span>
+              </button>
+            </div>
+
+            <label class="modal-form-label num-child" for="modal-num-child">
+              <span class="num-child-text">Дети:</span>
+            </label>
+            <div class="number-input-wrapper last-element">
+              <button class="modal-tooltip-button" aria-labelledby="tooltip-label-date" type="button">
+                <span class="modal-tooltip" role="tooltip" id="tooltip-label-date">Укажите количество детей, которые будут с вами, возраст которых от 6 до 18 лет. Дети до 6 лет размещаются бесплатно.</span>
+              </button>
+              <button class="button-num-minus" type="button">
+                <span class="visually-hidden">убавить</span>
+              </button>
+              <input class="number-input num-child" id="modal-num-child" name="visit-number-child" type="number" value="2" min="0" required>
+              <button class="button-num-plus" type="button">
+                <span class="visually-hidden">добавить</span>
+              </button>
+            </div>
+
+            <button class="modal-form-button button-all" type="submit">Найти</button>
+          </form>
+        </section>
+      </div>
+
+    </div>
   </body>
 </html>

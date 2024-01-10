@@ -74,6 +74,7 @@ body {
 
 .header-logo {
   position: relative;
+  width: 140px;
   margin-right: 28px;
   margin-bottom: -6px;
   line-height: 0;
@@ -380,7 +381,7 @@ body {
   flex-wrap: wrap;
   width: 100%;
   min-height: 485px;
-  background-color: #82b3d3;
+  background-color: #3f5e72;
   background-image: url("../images/index-bottom-background.svg"),
     url("../images/index-background.jpg");
   background-position: left bottom;
@@ -435,9 +436,9 @@ body {
 
 .advantages-item-edge img {
   align-self: center;
-  object-fit: contain;
-  max-width: 100%;
-  background-color: #68a2ca;
+  object-fit: cover;
+  width: 100%;
+  background-color: #82b3d3;
 }
 
 .advantages-bottom-block {
@@ -446,6 +447,7 @@ body {
 
 .advantages-item-edge-text {
   display: flex;
+  flex-shrink: 0;
   justify-content: center;
   align-items: center;
   width: 400px;
@@ -908,6 +910,7 @@ body {
 
 .control-checkbox:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 .control-checkbox:active {
@@ -931,7 +934,7 @@ body {
   max-height: 48px;
   padding: 12px 48px 12px 18px;
   box-sizing: border-box;
-  border: none;
+  border: 2px solid transparent;
   background-color: #f2f2f2;
 }
 
@@ -995,7 +998,7 @@ label[for="price-end"]::after {
 }
 
 .price-field:placeholder-shown:focus {
-  border: none;
+  border-color: transparent;
   outline: 3px solid #83b3d3;
   background-color: #e6e6e6;
 }
@@ -1450,6 +1453,21 @@ label[for="price-end"]::after {
   color: rgba(255, 255, 255, 0.30);
 }
 
+.button-null:hover {
+  border-radius: 4px;
+  background-color: #e6e6e6;
+}
+
+.button-null:focus-visible {
+  border-radius: 4px;
+  border: 2px solid #82b3d3;
+  outline: none;
+}
+
+.button-null:active {
+  opacity: 0.3;
+}
+
 .catalog-pagination-item {
   border-radius: 4px;
   background-color: #82b3d3;
@@ -1577,7 +1595,7 @@ label[for="price-end"]::after {
 .modal-date-input {
   margin: 0;
   padding: 12px 20px;
-  border: none;
+  border: 2px solid transparent;
   font-size: 18px;
   line-height: 24px;
   font-weight: 700;
@@ -1593,13 +1611,14 @@ label[for="price-end"]::after {
 
 .modal-date-input:placeholder-shown:focus {
   background-color: #e6e6e6;
-  border: none;
+  border-color: transparent;
+  box-sizing: border-box;
   outline: 3px solid #83b3d3;
 }
 
 .modal-date-input:focus {
   background-color: #f2f2f2;
-  border: 2px solid #000000;
+  border-color: #000000;
   outline: none;
 }
 
@@ -1656,8 +1675,9 @@ label[for="price-end"]::after {
   background-color: #f2f2f2;
 }
 
-.number-input:focus {
-  outline: none;
+.number-input:focus-visible {
+  outline: 3px solid #83b3d3;
+  border-radius: 4px;
 }
 
 .modal-form-label {
@@ -1701,11 +1721,14 @@ label[for="price-end"]::after {
   font-family: inherit;
   border-radius: 50%;
   border: none;
-  background-image: url("../images/i-popup.svg");
-  background-position: center;
-  background-repeat: no-repeat;
   background-color: #83b3d3;
   cursor: pointer;
+}
+
+.modal-tooltip-button svg {
+  position: absolute;
+  top: 7px;
+  right: 12px;
 }
 
 .modal-tooltip {
@@ -1767,35 +1790,46 @@ input[type="number"] {
   right: 22px;
   width: 16px;
   height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
   border: none;
   box-sizing: border-box;
   cursor: pointer;
-  background-image: url("../images/calendar-icon.svg");
-  background-position: center;
   opacity: 0.3;
-  content: "";
-  z-index: 1;
 }
 
 .button-num-minus,
 .button-num-plus {
+  position: relative;
   width: 20px;
   height: 20px;
   border: none;
   opacity: 0.3;
-  background-position: center;
-  background-repeat: no-repeat;
   cursor: pointer;
+}
+
+.button-num-minus svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -1px);
+}
+
+.button-num-plus svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .button-num-minus {
   margin-right: 3px;
-  background-image: url("../images/minus-icon.svg");
 }
 
 .button-num-plus {
   margin-left: 3px;
-  background-image: url("../images/plus-icon.svg");
 }
 
 .calendar-button:hover,
